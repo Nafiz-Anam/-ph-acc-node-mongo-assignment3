@@ -1,3 +1,3 @@
 ## Job Portal API
 
--   Live Server Link:
+-   Live Server Link: https://ph-job-portal.onrender.com

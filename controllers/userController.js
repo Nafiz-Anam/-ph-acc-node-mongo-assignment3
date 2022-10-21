@@ -9,7 +9,7 @@ exports.signupUser = async (req, res, next) => {
         if (newUser.role === "candidate") {
             const user = req.body;
             await createCandidateService({
-                name: `${user.firstName} ${user.lastName}`,
+                name: user.name,
                 user: {
                     id: newUser._id,
                 },
@@ -25,12 +25,10 @@ exports.loginUser = async (req, res, next) => {
     try {
         const { email, password } = req.body;
         if (!email || !password) {
-            return res
-                .status(400)
-                .json({
-                    success: false,
-                    error: "Email & Password is not valid!",
-                });
+            return res.status(400).json({
+                success: false,
+                error: "Email & Password is not valid!!!",
+            });
         }
         const user = await userService.findUserService({ email });
 
@@ -39,7 +37,7 @@ exports.loginUser = async (req, res, next) => {
         if (!user) {
             return res
                 .status(400)
-                .json({ success: false, error: "No User Found" });
+                .json({ success: false, error: "No User Found!!!!" });
         }
 
         const isPasswordValid = user.comparePassword(password, user.password);
@@ -47,7 +45,7 @@ exports.loginUser = async (req, res, next) => {
         if (!isPasswordValid) {
             return res
                 .status(400)
-                .json({ success: false, error: "Password is wrong" });
+                .json({ success: false, error: "Password is wrong!!!" });
         }
 
         const token = generateToken(data);

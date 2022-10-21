@@ -21,7 +21,7 @@ app.use("/user", userRoute);
 app.use("/admin", adminRoute);
 
 mongoose.connect(
-    "mongodb+srv://nafiz003:Nafiz%401199@cluster0.3t2vk.mongodb.net/?retryWrites=true&w=majority",
+    "mongodb+srv://nafiz003:Nafiz%401199@cluster0.3t2vk.mongodb.net/ph-job-portal?retryWrites=true&w=majority",
     () => {
         console.log("Database is connected");
     }
