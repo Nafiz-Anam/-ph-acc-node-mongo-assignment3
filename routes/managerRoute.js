@@ -11,10 +11,10 @@ router
     .post(managerController.createManager)
 
 router
-    .get('/jobs', verifyToken, authorization('manager'), managerController.selectedManagerJobs)
+    .get('/jobs', verifyToken, authorization('hiring manager'), managerController.selectedManagerJobs)
 
 router
-    .get('/jobs/:id', verifyToken, authorization('manager'), managerController.selectedManagerJobById)
+    .get('/jobs/:id', verifyToken, authorization('hiring manager'), managerController.selectedManagerJobById)
 
 router
     .route('/:id')

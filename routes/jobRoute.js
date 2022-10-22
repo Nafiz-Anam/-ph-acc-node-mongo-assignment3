@@ -9,14 +9,18 @@ const authorization = require('../utils/authorization');
 router
     .route('/')
     .get(jobController.findAllJob)
-    .post(verifyToken, authorization('manager'), jobController.createJob)
+    .post(verifyToken, authorization('hiring manager'), jobController.createJob)
 
 router
     .post('/:id/apply', verifyToken, authorization('candidate'), fileUploader.single("pdf"), jobController.applyJob)
 
 router
-    .route('/:id')
+    .route("/:id")
     .get(jobController.findOneJob)
-    .patch(verifyToken, authorization('manager'), jobController.updateJob)
+    .patch(
+        verifyToken,
+        authorization("hiring manager"),
+        jobController.updateJob
+    );
 
 module.exports = router
